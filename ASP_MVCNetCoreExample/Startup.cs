@@ -30,6 +30,9 @@ namespace ASP_MVCNetCoreExample
             {
                 options.UseSqlite(m_config.GetConnectionString("DefaultConnection"));
             });
+            
+            services.AddCors();
+
             services.AddControllersWithViews();
         }
 
@@ -50,7 +53,9 @@ namespace ASP_MVCNetCoreExample
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            // (Cross Origin Resource Sharing) Security mechanism built in to all modern web browsers.
+            app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
+            //
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
