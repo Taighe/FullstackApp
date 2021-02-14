@@ -14,5 +14,6 @@ namespace ASP_MVCNetCoreExample.Data
         }
 
         public DbSet<MovieModel> Movies { get; set; }
+        public DbSet<UserModel> Users { get; set; }
     }
 }
