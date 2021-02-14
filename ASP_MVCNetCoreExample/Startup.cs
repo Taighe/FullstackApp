@@ -54,7 +54,7 @@ namespace ASP_MVCNetCoreExample
 
             app.UseRouting();
             // (Cross Origin Resource Sharing) Security mechanism built in to all modern web browsers.
-            app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
+            app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
             //
             app.UseAuthorization();
 
