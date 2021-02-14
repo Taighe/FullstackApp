@@ -3,3 +3,5 @@ obj/
 packages/
 .vs/
 ssl
+db-shm
+db-wal
