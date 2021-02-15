@@ -1,4 +1,8 @@
 using ASP_MVCNetCoreExample.Data;
+using ASP_MVCNetCoreExample.Extensions;
+using ASP_MVCNetCoreExample.Interfaces;
+using ASP_MVCNetCoreExample.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -6,9 +10,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace ASP_MVCNetCoreExample
@@ -26,13 +32,10 @@ namespace ASP_MVCNetCoreExample
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(options =>
-            {
-                options.UseSqlite(m_config.GetConnectionString("DefaultConnection"));
-            });
-            
+            services.AddApplicationServices(m_config);
             services.AddCors();
-
+            services.AddIdentiyServices(m_config);
+            
             services.AddControllersWithViews();
         }
 
@@ -56,6 +59,7 @@ namespace ASP_MVCNetCoreExample
             // (Cross Origin Resource Sharing) Security mechanism built in to all modern web browsers.
             app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
             //
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

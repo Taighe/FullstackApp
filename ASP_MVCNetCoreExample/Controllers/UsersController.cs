@@ -10,24 +10,26 @@ using System.Threading.Tasks;
 
 namespace ASP_MVCNetCoreExample.Controllers
 {
-    public class MoviesController : BaseApiController
+    public class UsersController : BaseApiController
     {
         private DataContext m_context;
-        public MoviesController(DataContext context)
+        public UsersController(DataContext context)
         {
             m_context = context;
         }
 
+        [AllowAnonymous]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MovieModel>>> GetMovies()
+        public async Task<ActionResult<IEnumerable<UserModel>>> GetUsers()
         {
-            return await m_context.Movies.ToListAsync();
+            return await m_context.Users.ToListAsync();
         }
 
+        [Authorize]
         [HttpGet("{id}")]
-        public async Task<ActionResult<MovieModel>> GetMovie(int id)
+        public async Task<ActionResult<UserModel>> GetUser(int id)
         {
-            return await m_context.Movies.FindAsync(id);
+            return await m_context.Users.FindAsync(id);
         }
     }
 }
