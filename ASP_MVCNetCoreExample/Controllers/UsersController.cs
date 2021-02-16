@@ -1,5 +1,8 @@
 ﻿using ASP_MVCNetCoreExample.Data;
+using ASP_MVCNetCoreExample.Dtos;
+using ASP_MVCNetCoreExample.Interfaces;
 using ASP_MVCNetCoreExample.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,26 +13,28 @@ using System.Threading.Tasks;
 
 namespace ASP_MVCNetCoreExample.Controllers
 {
+    [Authorize]
     public class UsersController : BaseApiController
     {
-        private DataContext m_context;
-        public UsersController(DataContext context)
+        private IUserRepository m_repository;
+        private readonly IMapper m_mapper;
+
+        public UsersController(IUserRepository repository, IMapper mapper)
         {
-            m_context = context;
+            m_repository = repository;
+            m_mapper = mapper;
         }
 
-        [AllowAnonymous]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserModel>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers()
         {
-            return await m_context.Users.ToListAsync();
+            return Ok(await m_repository.GetUsersAsync());
         }
 
-        [Authorize]
-        [HttpGet("{id}")]
-        public async Task<ActionResult<UserModel>> GetUser(int id)
+        [HttpGet("{username}")]
+        public async Task<ActionResult<MemberDto>> GetUser(string username)
         {
-            return await m_context.Users.FindAsync(id);
+            return await m_repository.GetUserByUsernameAsync(username);
         }
     }
 }

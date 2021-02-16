@@ -9,6 +9,9 @@ namespace ASP_MVCNetCoreExample.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string ReleaseDate { get; set; }
+        public string Director { get; set; }
+        public string ImageUrl { get; set; }
+        public bool Favourite { get; set; }
+        public DateTime ReleaseDate { get; set; }
     }
 }
