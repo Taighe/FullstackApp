@@ -25,10 +25,6 @@ export class NavComponent implements OnInit {
   login() {
     this.accountService.login(this.model).subscribe(response => {
       this.router.navigateByUrl('/movies');
-      },
-      error => {
-        console.log(error);
-        this.toastr.error(error.error);
       })
   }
 

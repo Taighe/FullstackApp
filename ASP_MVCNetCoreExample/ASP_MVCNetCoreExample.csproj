@@ -23,6 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="client\src\app\errors\" />
+    <Folder Include="client\src\app\_interceptors\" />
     <Folder Include="client\src\app\_guards\" />
     <Folder Include="client\src\app\_services\" />
     <Folder Include="client\ssl\" />

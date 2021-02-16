@@ -7,9 +7,12 @@
           <a class="nav-link" routerLink="/movies" routerlinkActive="active">Movies</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/lists" routerlinkActive="active">Lists </a>
+          <a class="nav-link" routerLink="/lists" routerlinkActive="active">Lists</a>
         </li>
       </ng-container>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/errors" routerlinkActive="active">Errors</a>
+      </li>
     </ul>
 
     <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
