@@ -14,6 +14,7 @@ namespace ASP_MVCNetCoreExample.Data
     public class Seed
     {
         private const string USERSEED_PATH = "Data/UserSeedData.json";
+        private const string MOVIESEED_PATH = "Data/MovieSeedData.json";
         private const string PASSWORD = "Passw0rd";
         public static async Task SeedUsers(DataContext context)
         {
@@ -32,6 +33,21 @@ namespace ASP_MVCNetCoreExample.Data
 
                     context.Users.Add(user);
                 }
+            }
+
+            await context.SaveChangesAsync();
+        }
+
+        public static async Task SeedMovies(DataContext context)
+        {
+            if (await context.Movies.AnyAsync())
+                return;
+
+            var movieData = await File.ReadAllTextAsync(MOVIESEED_PATH);
+            var movies = JsonSerializer.Deserialize<List<MovieModel>>(movieData);
+            foreach (var movie in movies)
+            {
+                context.Movies.Add(movie);
             }
 
             await context.SaveChangesAsync();

@@ -10,7 +10,6 @@ import { AccountService } from './_services/account.service';
 })
 export class AppComponent implements OnInit {
   title = 'Cool Movies DB';
-  movies: any;
 
   constructor(private http: HttpClient, private accountService: AccountService) { }
 

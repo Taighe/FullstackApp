@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
+import { FavouritesComponent } from './favourites/favourites.component';
 import { HomeComponent } from './home/home.component';
 import { ListsComponent } from './lists/lists.component';
 import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
@@ -14,11 +15,10 @@ const routes: Routes = [
   {
     path: '',
     runGuardsAndResolvers: 'always',
-    canActivate: [AuthGuard],
     children: [
-      { path: 'lists', component: ListsComponent },
-      { path: 'movies', component: MovieListComponent, canActivate: [AuthGuard] },
-      { path: 'movies/:id', component: MovieDetailComponent }
+      { path: 'movies', component: MovieListComponent },
+      { path: 'movies/:id', component: MovieDetailComponent },
+      { path: 'favourites', component: FavouritesComponent, canActivate: [AuthGuard] }
     ]
   },
   { path: 'errors', component: TestErrorsComponent },

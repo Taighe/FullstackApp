@@ -4,34 +4,34 @@
         "Director": "Frank Darabont",
         "ImageUrl": "",
         "Favourite": false,
-        "ReleaseDate": "10-12-1999"
+        "ReleaseDate": "1999-12-10"
     },
     {
         "Name": "Casablanca",
         "Director": "Michael Curtiz",
         "ImageUrl": "",
         "Favourite": false,
-        "ReleaseDate": "23-01-1943"
+        "ReleaseDate": "1943-01-23"
     },
     {
         "Name": "No Country for Old Men",
         "Director": "Ethan Coen, Joel Coen",
         "ImageUrl": "",
         "Favourite": false,
-        "ReleaseDate": "21-11-2007"
+        "ReleaseDate": "2007-11-21"
     },
     {
         "Name": "Escape from Alcatraz",
         "Director": "Don Siegal",
         "ImageUrl": "",
         "Favourite": false,
-        "ReleaseDate": "22-06-1979"
+        "ReleaseDate": "1979-06-22"
     },
     {
         "Name": "Apocalypto",
         "Director": "Mel Gibson",
         "ImageUrl": "",
         "Favourite": false,
-        "ReleaseDate": "08-12-2006"
+        "ReleaseDate": "2006-12-08"
     }
 ]

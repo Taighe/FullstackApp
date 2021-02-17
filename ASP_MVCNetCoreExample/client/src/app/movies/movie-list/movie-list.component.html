@@ -1,1 +1,6 @@
-<p>movie-list works!</p>
+<h1>Movies</h1>
+<div style="text-align: left" class="row">
+  <div *ngFor="let movie of movies" class="col-2">
+    <app-movie-card [movie]="movie"></app-movie-card>
+  </div>
+</div>

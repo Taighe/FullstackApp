@@ -1,0 +1,12 @@
+.card:hover {
+  transform: scale(1.1, 1.1);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+
+}
+
+.card {
+  transform: scale(1.0, 1.0);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+}

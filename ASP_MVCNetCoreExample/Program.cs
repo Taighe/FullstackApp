@@ -25,6 +25,7 @@ namespace ASP_MVCNetCoreExample
                     var context = services.GetRequiredService<DataContext>();
                     await context.Database.MigrateAsync();
                     await Seed.SeedUsers(context);
+                    await Seed.SeedMovies(context);
                 }
                 catch(Exception ex)
                 {
